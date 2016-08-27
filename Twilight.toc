@@ -1,0 +1,12 @@
+## Interface: 40300
+## Title: Twilight
+## Author: Lanrutcon
+## Notes: SkyInventory
+## Version: 1.0
+
+Utils.lua
+Fonts.xml
+Templates.xml
+Twilight.xml
+Bindings.xml
+Twilight.lua

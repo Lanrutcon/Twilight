@@ -1,0 +1,68 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<!-- Skyrim fonts -->
+	<Font name="SkyrimFont" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="16"/>
+		</FontHeight>
+		<Color r="0.6" g="0.6" b="0.6"/>
+	</Font>
+	
+	<Font name="SkyrimFontHighlighted" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="24"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	
+	<Font name="SkyrimFontLabel" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="16"/>
+		</FontHeight>
+		<Color r="0.6" g="0.6" b="0.6"/>
+		<Shadow>
+			<Offset>
+				<AbsDimension x="2" y="-2"/>
+			</Offset>
+			<Color r="0" g="0" b="0" a="0.5"/>
+		</Shadow>
+	</Font>
+
+	<Font name="SkyrimFontHighlightedSmall1" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="20"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	
+	<Font name="SkyrimFontHighlightedSmall2" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="18"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	
+	<Font name="SkyrimFontHighlightedSmall3" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="16"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	
+	<!-- Normal Item Title Font -->
+	<Font name="SkyrimFontItemTitle" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="32"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	
+	<!-- Smaller Item Title Font - used when the text is too long-->
+	<Font name="SkyrimFontItemTitleSmall" font="Interface\AddOns\Twilight\Font\Futura-Condensed-Normal.ttf" outline="NORMAL" virtual="true">
+		<FontHeight>
+			<AbsValue val="28"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	
+</Ui>

@@ -1,0 +1,890 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+
+	<!-- Main Frame :: TODO: port the Lua code to here -->
+	<Frame name="Twilight" parent="WorldFrame" hidden="true">
+		<Scripts>
+			<OnLoad>
+				self:SetAllPoints();
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+
+	<!-- Item Tooltip Template :: TODO: port the Lua code to here -->
+	<Frame name="TwilightTooltip" virtual="true">
+		<Size x="512" y="160"/>
+		
+		<Layers>
+			<Layer level="BORDER" textureSubLevel="1">
+				<!-- Corners -->
+				<Texture name="$parentTopRightTexture" parentKey="topRightTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="0.5"/>
+				</Texture>
+				<Texture name="$parentTopLeftTexture" parentKey="topLeftTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0" bottom="0.5"/>
+				</Texture>
+				<Texture name="$parentBottomRightTexture" parentKey="bottomRightTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0.5" bottom="1"/>
+				</Texture>
+				<Texture name="$parentBottomLeftTexture" parentKey="bottomLeftTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0.5" bottom="1"/>
+				</Texture>
+			
+				<!-- Sides -->
+				<Texture name="$parentTopTexture" parentKey="topTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentTopLeftTexture">
+							<Offset>
+								<AbsDimension x="52" y="4"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parentTopRightTexture">
+							<Offset>
+								<AbsDimension x="-52" y="4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.1" top="0" bottom="0.398"/>
+				</Texture>			
+				<Texture name="$parentRightTexture" parentKey="rightTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentTopRightTexture">
+							<Offset>
+								<AbsDimension x="-3" y="-52"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOM" relativeTo="$parentBottomRightTexture">
+							<Offset>
+								<AbsDimension x="-3" y="52"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="0.181"/>
+				</Texture>		
+				<Texture name="$parentBottomTexture" parentKey="bottomTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentBottomLeftTexture">
+							<Offset>
+								<AbsDimension x="52" y="-4"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parentBottomRightTexture">
+							<Offset>
+								<AbsDimension x="-52" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.9" right="1" top="0.602" bottom="1"/>
+				</Texture>				
+				<Texture name="$parentLeftTexture" parentKey="leftTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentTopLeftTexture">
+							<Offset>
+								<AbsDimension x="3" y="-52"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOM" relativeTo="$parentBottomLeftTexture">
+							<Offset>
+								<AbsDimension x="3" y="52"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0.819" bottom="1"/>
+				</Texture>
+				
+				<!-- Center -->
+				<Texture name="$parentCenterTexture" parentKey="centerTexture">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTopLeftTexture" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="11"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRightTexture" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-11"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0"/>
+				</Texture>	
+				
+			</Layer>
+			<Layer level="ARTWORK" textureSubLevel="1">
+				<Texture name="$parentLine" parentKey="line">
+					<Size x="440" y="2"/>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.4" g="0.4" b="0.4"/>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY" textureSubLevel="1">
+				<!-- ItemName -->
+				<FontString name="$parentItemInfoName" parentKey="itemInfoName" inherits="SkyrimFontItemTitle">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				
+				
+				<!-- TypeLabel: TYPE-->
+				<FontString name="$parentTypeLabel" parentKey="typeLabel" text="TYPE " inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="-187" y="-22"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				
+				<!-- TypeString: Mail, Plate vs Dagger, Sword -->
+				<FontString name="$parentTypeString" parentKey="typeString" inherits="SkyrimFontHighlighted">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentTypeLabel" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+					
+				<!-- StatLabel: Armor vs Damage -->
+				<FontString name="$parentStatLabel" parentKey="statLabel" text="ARMOR " inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="-30" y="-22"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				
+				<!-- StatString: 300 (number) -->
+				<FontString name="$parentStatString" parentKey="statString" text="500" inherits="SkyrimFontHighlighted">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentStatLabel" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				
+				<!-- SlotLabel: Head,Waists vs TwoHand, OneHand -->
+				<FontString name="$parentSlotLabel" parentKey="slotLabel" text="SLOT " inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="120" y="-22"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				
+				<!-- SlotString: Head,Waists vs TwoHand, OneHand -->
+				<FontString name="$parentSlotString" parentKey="slotString" text="Off-Hand" inherits="SkyrimFontHighlighted">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentSlotLabel" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				
+				<!-- ValueLabel: VALUE -->
+				<FontString name="$parentValueLabel" parentKey="valueLabel" text="VALUE " inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="-30" y="-50"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			
+				<!-- ValueString: Item's value -->
+				<FontString name="$parentValueString" parentKey="valueString" text="50" inherits="SkyrimFontHighlighted">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentValueLabel" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			
+			</Layer>
+		</Layers>
+		
+		<Scripts>
+			<OnLoad>
+				self.topRightTexture:SetVertexColor(1,1,1,0.8);
+				self.topLeftTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomRightTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomLeftTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.topTexture:SetVertexColor(1,1,1,0.8);
+				self.rightTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomTexture:SetVertexColor(1,1,1,0.8);
+				self.leftTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.centerTexture:SetVertexColor(1,1,1,0.8);
+			</OnLoad>
+		</Scripts>
+	
+	</Frame>
+
+	
+	<!-- Bottom Panel with player information -->
+	<Frame name="TwilightBottomPanel" parent="Twilight" frameStrata="FULLSCREEN" parentKey="bottomPanel" frameLevel="15">
+		
+		<Anchors>
+			<Anchor point="BOTTOM"/>
+		</Anchors>
+		
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="1">
+				<Texture name="$parentBackground" parentKey="background">
+					<Color r="0.02" g="0.02" b="0.02" a="0.6"/>
+				</Texture>	
+			</Layer>
+			<Layer level="BORDER" textureSubLevel="1">
+				<Texture name="$parentLine" parentKey="line">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.4" g="0.4" b="0.4" a="0.9"/>
+				</Texture>	
+			</Layer>
+			
+			<Layer level="OVERLAY" textureSubLevel="1">
+				<FontString name="$parentGoldLabel" parentKey="goldLabel" text="Gold" inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-300" y="5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentGoldString" parentKey="goldString" justifyH="LEFT" inherits="SkyrimFontHighlightedSmall1">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentGoldLabel" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentBagSlotsLabel" parentKey="bagSlots" text="Empty Bag Slots" inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="$parentGoldLabel">
+							<Offset>
+								<AbsDimension x="-125" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentBagSlotString" parentKey="bagSlotString" justifyH="LEFT" inherits="SkyrimFontHighlightedSmall1">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentBagSlotsLabel" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			
+			
+				<!-- 2 Labels+Strings to be used for identifying the Keybinds -->
+				<FontString name="$parentString1" parentKey="string1" justifyH="LEFT" hidden="true" inherits="SkyrimFontHighlightedSmall1">
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="50" y="5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>							
+				<FontString name="$parentLabel1" parentKey="label1" hidden="true" inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentString1" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>			
+				<FontString name="$parentString2" parentKey="string2" justifyH="LEFT" hidden="true" inherits="SkyrimFontHighlightedSmall1">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLabel1" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>				
+				<FontString name="$parentLabel2" parentKey="label2" hidden="true" inherits="SkyrimFontLabel">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentString2" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		
+		<Scripts>
+			<OnLoad>
+				self:SetSize(GetScreenWidth()*UIParent:GetEffectiveScale(), GetScreenHeight()/10*UIParent:GetEffectiveScale());
+				self.background:SetAllPoints();
+				self.line:SetSize(GetScreenWidth(), 2);
+				
+				self:RegisterEvent("PLAYER_ENTERING_WORLD");
+				self:RegisterEvent("PLAYER_MONEY");
+				self:RegisterEvent("BAG_UPDATE");
+			</OnLoad>
+			
+			<OnEvent>
+				if(event == "BAG_UPDATE") then
+					local numTotalSlots, numEmptySlots = 0, 0;
+					for i=0, 4 do
+						numTotalSlots = numTotalSlots + GetContainerNumSlots(i);
+						numEmptySlots = numEmptySlots + GetContainerNumFreeSlots(i);
+					end
+					
+					self.bagSlotString:SetText(numEmptySlots .. "/" .. numTotalSlots);
+					
+				elseif(event == "PLAYER_MONEY" or event == "PLAYER_ENTERING_WORLD") then
+					self.goldString:SetText(GetCoinTextureString(GetMoney()));
+				end
+			</OnEvent>
+		</Scripts>
+	
+	</Frame>
+	
+	
+	<!-- Popup frame that appears when a confirmation is needed-->
+	<Frame name="TwilightStaticPopup" parent="Twilight" frameStrata="FULLSCREEN" frameLevel="20" hidden="true">
+		<Size x="300" y="128"/>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BORDER" textureSubLevel="1">
+				<!-- Corners -->
+				<Texture name="$parentTopRightTexture" parentKey="topRightTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="0.5"/>
+				</Texture>
+				<Texture name="$parentTopLeftTexture" parentKey="topLeftTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0" bottom="0.5"/>
+				</Texture>
+				<Texture name="$parentBottomRightTexture" parentKey="bottomRightTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0.5" bottom="1"/>
+				</Texture>
+				<Texture name="$parentBottomLeftTexture" parentKey="bottomLeftTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0.5" bottom="1"/>
+				</Texture>
+			
+				<!-- Sides -->
+				<Texture name="$parentTopTexture" parentKey="topTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentTopLeftTexture">
+							<Offset>
+								<AbsDimension x="52" y="4"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parentTopRightTexture">
+							<Offset>
+								<AbsDimension x="-52" y="4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.1" top="0" bottom="0.398"/>
+				</Texture>			
+				<Texture name="$parentRightTexture" parentKey="rightTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentTopRightTexture">
+							<Offset>
+								<AbsDimension x="-3" y="-52"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOM" relativeTo="$parentBottomRightTexture">
+							<Offset>
+								<AbsDimension x="-3" y="52"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="0.181"/>
+				</Texture>		
+				<Texture name="$parentBottomTexture" parentKey="bottomTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentBottomLeftTexture">
+							<Offset>
+								<AbsDimension x="52" y="-4"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parentBottomRightTexture">
+							<Offset>
+								<AbsDimension x="-52" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.9" right="1" top="0.602" bottom="1"/>
+				</Texture>				
+				<Texture name="$parentLeftTexture" parentKey="leftTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentTopLeftTexture">
+							<Offset>
+								<AbsDimension x="3" y="-52"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOM" relativeTo="$parentBottomLeftTexture">
+							<Offset>
+								<AbsDimension x="3" y="52"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0.819" bottom="1"/>
+				</Texture>
+				
+				<!-- Center -->
+				<Texture name="$parentCenterTexture" parentKey="centerTexture">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTopLeftTexture" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="11"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRightTexture" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-11"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0"/>
+				</Texture>	
+				
+			</Layer>
+			<Layer level="ARTWORK" textureSubLevel="1">
+				<Texture name="$parentLine" parentKey="line">
+					<Size x="250" y="2"/>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.4" g="0.4" b="0.4"/>
+				</Texture>
+				
+				<FontString name="$parentText" parentKey="text" inherits="SkyrimFont">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="25"/>
+							</Offset>
+						</Anchor>
+					</Anchors>	
+				</FontString>
+				
+				<FontString name="$parentYes" parentKey="yes" inherits="SkyrimFont">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="50" y="-25"/>
+							</Offset>
+						</Anchor>
+					</Anchors>	
+				</FontString>
+				
+				<FontString name="$parentNo" parentKey="no" inherits="SkyrimFont">
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="-50" y="-25"/>
+							</Offset>
+						</Anchor>
+					</Anchors>	
+				</FontString>
+			</Layer>
+		</Layers>
+		
+		<Scripts>
+			<OnLoad>	
+				self.topRightTexture:SetVertexColor(1,1,1,0.8);
+				self.topLeftTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomRightTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomLeftTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.topTexture:SetVertexColor(1,1,1,0.8);
+				self.rightTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomTexture:SetVertexColor(1,1,1,0.8);
+				self.leftTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.centerTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.yes:SetText("|cffe6e6e6[ENTER]|r "..YES);
+				self.no:SetText("|cffe6e6e6[Q]|r "..NO);
+			</OnLoad>
+			<OnShow>
+				self.text:SetText(string.format(DELETE_ITEM, self.itemLink));
+				
+				<!-- Increasing the frame's size according with text's length :: also removing imperfections in the textures -->
+				local size = math.floor(self.text:GetStringWidth()+0.5);
+				
+				if(math.fmod(size,2) == 0) then
+					self:SetSize(self.text:GetStringWidth()+50, 128);
+				else
+					self:SetSize(self.text:GetStringWidth()+49, 128);
+				end
+			</OnShow>
+		</Scripts>
+	
+	</Frame>
+	
+	<Frame name="TwilightPopupMessage" hidden="true">
+		<Size x="300" y="128"/>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BORDER" textureSubLevel="1">
+				<!-- Corners -->
+				<Texture name="$parentTopRightTexture" parentKey="topRightTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="0.5"/>
+				</Texture>
+				<Texture name="$parentTopLeftTexture" parentKey="topLeftTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0" bottom="0.5"/>
+				</Texture>
+				<Texture name="$parentBottomRightTexture" parentKey="bottomRightTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0.5" bottom="1"/>
+				</Texture>
+				<Texture name="$parentBottomLeftTexture" parentKey="bottomLeftTexture" file="Interface\AddOns\Twilight\Textures\TooltipCorners">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0.5" bottom="1"/>
+				</Texture>
+			
+				<!-- Sides -->
+				<Texture name="$parentTopTexture" parentKey="topTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentTopLeftTexture">
+							<Offset>
+								<AbsDimension x="52" y="4"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parentTopRightTexture">
+							<Offset>
+								<AbsDimension x="-52" y="4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.1" top="0" bottom="0.398"/>
+				</Texture>			
+				<Texture name="$parentRightTexture" parentKey="rightTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentTopRightTexture">
+							<Offset>
+								<AbsDimension x="-3" y="-52"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOM" relativeTo="$parentBottomRightTexture">
+							<Offset>
+								<AbsDimension x="-3" y="52"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="0.181"/>
+				</Texture>		
+				<Texture name="$parentBottomTexture" parentKey="bottomTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentBottomLeftTexture">
+							<Offset>
+								<AbsDimension x="52" y="-4"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parentBottomRightTexture">
+							<Offset>
+								<AbsDimension x="-52" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.9" right="1" top="0.602" bottom="1"/>
+				</Texture>				
+				<Texture name="$parentLeftTexture" parentKey="leftTexture" file="Interface\AddOns\Twilight\Textures\TooltipBorders">
+					<Size>
+						<AbsDimension x="64" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentTopLeftTexture">
+							<Offset>
+								<AbsDimension x="3" y="-52"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOM" relativeTo="$parentBottomLeftTexture">
+							<Offset>
+								<AbsDimension x="3" y="52"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.5" top="0.819" bottom="1"/>
+				</Texture>
+				
+				<!-- Center -->
+				<Texture name="$parentCenterTexture" parentKey="centerTexture">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTopLeftTexture" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="11"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRightTexture" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-11"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0"/>
+				</Texture>	
+				
+			</Layer>
+			<Layer level="ARTWORK" textureSubLevel="1">
+				<Texture name="$parentLine" parentKey="line">
+					<Size x="250" y="2"/>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.4" g="0.4" b="0.4"/>
+				</Texture>
+				
+				<FontString name="$parentText" parentKey="text" text="This may be your first time using 'Twilight'. Please, go to 'Keybinds' and to set up a key." inherits="SkyrimFont">
+					<Size x="250" y="128"/>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>	
+				</FontString>
+			</Layer>
+		</Layers>		
+		
+		<Scripts>
+			<OnLoad>	
+				self.topRightTexture:SetVertexColor(1,1,1,0.8);
+				self.topLeftTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomRightTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomLeftTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.topTexture:SetVertexColor(1,1,1,0.8);
+				self.rightTexture:SetVertexColor(1,1,1,0.8);
+				self.bottomTexture:SetVertexColor(1,1,1,0.8);
+				self.leftTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.centerTexture:SetVertexColor(1,1,1,0.8);
+				
+				self.text:SetSpacing(20);
+				
+				self:RegisterEvent("PLAYER_ENTERING_WORLD");
+			</OnLoad>
+			
+			<OnMouseDown>
+				frameFade(self, 0.5, 1, 0, true);
+			</OnMouseDown>
+			
+			<OnEvent>
+				if(not GetBindingKey("CLICK TwilightItemInfoButton:RightButton")) then
+					self:Show();
+				else
+					self:UnregisterAllEvents();
+				end
+			</OnEvent>
+		</Scripts>
+	
+	</Frame>
+
+</Ui>
