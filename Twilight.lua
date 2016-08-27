@@ -921,7 +921,7 @@ local function setUpInventory()
 	
 	twi.background = twi:CreateTexture();
 	twi.background:SetAllPoints();
-	twi.background:SetTexture(0.0,0.0,0.0, 0.3);
+	twi.background:SetColorTexture(0.0,0.0,0.0, 0.3);
 	
 	--------------------------------------	
 	--TYPE PANEL (Consumables, Weapons, etc...)
@@ -932,16 +932,16 @@ local function setUpInventory()
 	
 	
 	twi.typeList.background = twi.typeList:CreateTexture(nil, "BACKGROUND");
-	twi.typeList.background:SetTexture(0.02,0.02,0.02,0.6);
+	twi.typeList.background:SetColorTexture(0.02,0.02,0.02,0.6);
 	twi.typeList.background:SetAllPoints();
 	
 	twi.typeList.leftLine = twi.typeList:CreateTexture(nil, "ARTWORK");
-	twi.typeList.leftLine:SetTexture(0.4,0.4,0.4,0.9);
+	twi.typeList.leftLine:SetColorTexture(0.4,0.4,0.4,0.9);
 	twi.typeList.leftLine:SetSize(3, GetScreenHeight());
 	twi.typeList.leftLine:SetPoint("LEFT", 3, 0);
 	
 	twi.typeList.rightLine = twi.typeList:CreateTexture(nil, "ARTWORK");
-	twi.typeList.rightLine:SetTexture(0.4,0.4,0.4,0.9);
+	twi.typeList.rightLine:SetColorTexture(0.4,0.4,0.4,0.9);
 	twi.typeList.rightLine:SetSize(3, GetScreenHeight());
 	twi.typeList.rightLine:SetPoint("RIGHT", -4, 0);
 	
@@ -950,7 +950,7 @@ local function setUpInventory()
 	twi.typeList.disabledFrame:SetAllPoints();
 	
 	twi.typeList.disabledFrame.texture = twi.typeList.disabledFrame:CreateTexture(nil, "OVERLAY");
-	twi.typeList.disabledFrame.texture:SetTexture(0.8,0.8,0.8,0.2);
+	twi.typeList.disabledFrame.texture:SetColorTexture(0.8,0.8,0.8,0.2);
 	twi.typeList.disabledFrame.texture:SetAllPoints();
 	
 	twi.typeList.disabledFrame:Hide();
@@ -979,16 +979,16 @@ local function setUpInventory()
 	twi.itemList:Hide();
 	
 	twi.itemList.background = twi.itemList:CreateTexture(nil, "BACKGROUND");
-	twi.itemList.background:SetTexture(0.02,0.02,0.02,0.6);
+	twi.itemList.background:SetColorTexture(0.02,0.02,0.02,0.6);
 	twi.itemList.background:SetAllPoints();
 	
 	twi.itemList.leftLine = twi.itemList:CreateTexture(nil, "ARTWORK");
-	twi.itemList.leftLine:SetTexture(0.4,0.4,0.4,0.9);
+	twi.itemList.leftLine:SetColorTexture(0.4,0.4,0.4,0.9);
 	twi.itemList.leftLine:SetSize(3, GetScreenHeight());
 	twi.itemList.leftLine:SetPoint("LEFT", 3, 0);
 	
 	twi.itemList.rightLine = twi.itemList:CreateTexture(nil, "ARTWORK");
-	twi.itemList.rightLine:SetTexture(0.4,0.4,0.4,0.9);
+	twi.itemList.rightLine:SetColorTexture(0.4,0.4,0.4,0.9);
 	twi.itemList.rightLine:SetSize(3, GetScreenHeight());
 	twi.itemList.rightLine:SetPoint("RIGHT", -5, 0);
 	
